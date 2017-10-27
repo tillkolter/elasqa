@@ -11,6 +11,16 @@ export default new Router({
       component: require('@/components/LandingPage').default
     },
     {
+      path: '/corpus',
+      name: 'corpus-manager',
+      component: require('@/components/CorpusManager').default
+    },
+    {
+      path: '/elastic',
+      name: 'elastic-manager',
+      component: require('@/components/ElasticManager').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

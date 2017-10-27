@@ -7,28 +7,17 @@
       </div>
 
       <div class="right-side">
-        <div class="doc">
-          <div class="title">Query Sheet</div>
-          <div id="query-station">
-            <query-panel></query-panel>
-            <results-list></results-list>
-          </div>
-        </div>
+        <router-view></router-view>
       </div>
     </main>
   </div>
 </template>
 
 <script>
-  import SystemInformation from './LandingPage/SystemInformation'
-  import QueryPanel from './QueryPanel'
-  import QueryList from './QueryList'
-  import ResultList from './ResultsList/ResultList'
-  import ResultsList from './ResultsList'
-
+  import MainNavigation from './MainNavigation'
   export default {
+    components: {MainNavigation},
     name: 'landing-page',
-    components: { ResultsList, ResultList, QueryList, QueryPanel, SystemInformation },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
@@ -37,7 +26,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
   * {
@@ -48,27 +37,10 @@
 
   body { font-family: 'Source Sans Pro', sans-serif; }
 
-  #wrapper {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-      );
-    height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
-  }
-
   #logo {
     height: auto;
     margin-bottom: 20px;
     width: 420px;
-  }
-
-  #query-station {
-    display: flex;
-    flex-direction: row;
   }
 
   main {

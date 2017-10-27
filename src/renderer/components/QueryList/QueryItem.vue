@@ -1,5 +1,5 @@
 <template>
-  <div>{{JSON.stringify(query)}}</div>
+  <div class="query-item">{{JSON.stringify(query)}}</div>
 </template>
 
 <script>
@@ -8,3 +8,11 @@
     props: ['query']
   }
 </script>
+
+<style lang="scss">
+  .query-item {
+    padding: $global-padding;
+    background-color: $brand-color-dark;
+    color: $brand-color-peach;
+  }
+</style>
