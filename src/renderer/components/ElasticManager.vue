@@ -8,6 +8,7 @@
     <div class="index-viewer">
       <elastic-indices></elastic-indices>
       <elastic-index v-if="currentElasticIndex" :index="currentElasticIndex"></elastic-index>
+      <index-mapper></index-mapper>
     </div>
   </div>
 </template>
@@ -16,8 +17,10 @@
   import ElasticIndices from './ElasticManager/ElasticIndices'
   import ElasticIndex from './ElasticManager/ElasticIndex'
   import { mapGetters } from 'vuex'
+  import SchemaInspector from './IndexMapper/SchemaInspector'
+  import IndexMapper from './IndexMapper'
   export default {
-    components: {ElasticIndex, ElasticIndices},
+    components: {IndexMapper, SchemaInspector, ElasticIndex, ElasticIndices},
     name: 'ElasticManager',
     data () {
       return {
@@ -26,7 +29,7 @@
       }
     },
     computed: {
-      ...mapGetters(['currentElasticIndex'])
+      ...mapGetters(['currentElasticIndex', 'databaseTableSchemas'])
     },
     methods: {
       onTestConnection () {
@@ -36,6 +39,7 @@
     mounted () {
       this.elasticHost = this.$store.state.ElasticManager.elasticHost
       this.elasticPort = this.$store.state.ElasticManager.elasticPort
+      this.$store.dispatch('loadTableSchemas')
     }
   }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div id="result-list">
     <div class="results" v-for="(result, i) in resultsHistory">
+      {{i}}
       <query-item :query="getQuery(i)"></query-item>
       <results-item :results="result"></results-item>
     </div>

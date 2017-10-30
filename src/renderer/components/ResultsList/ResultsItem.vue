@@ -1,6 +1,6 @@
 <template>
   <div class="results-item">
-    <result-item key="`result-${i}`" :result="result" v-for="(result, i) in currentResults"></result-item>
+    <result-item key="`result-${i}`" :result="result" v-for="(result, i) in results"></result-item>
   </div>
 </template>
 
@@ -9,6 +9,7 @@
   export default {
     components: {ResultItem},
     name: 'ResultList',
+    props: ['results'],
     computed: {
       currentResults () {
         return this.$store.getters.currentResults

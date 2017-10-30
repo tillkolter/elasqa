@@ -11,7 +11,6 @@
   import { query } from '../store/database'
   import 'highlight.js/styles/default.css'
   import { getSelectionCoords } from '../utils/text'
-  // import { getSelectionCoords } from '../utils/text'
   const highlight = require('highlight.js')
   export default {
     name: 'QueryPanel',

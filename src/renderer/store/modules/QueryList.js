@@ -12,8 +12,8 @@ const mutations = {
   },
   ADD_QUERY (state, query) {
     if (!state.history.includes(query)) {
-      state.history.push(query)
-      state.position = state.history.length - 1
+      state.history.unshift(query)
+      state.position = 0
     }
   }
 }

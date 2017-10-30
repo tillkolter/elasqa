@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="title">Query Sheet</div>
     <div id="query-station">
       <query-panel></query-panel>
       <results-list></results-list>
