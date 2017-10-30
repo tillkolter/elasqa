@@ -13,9 +13,9 @@ const mutations = {
   },
   ADD_RESULT (state, result) {
     if (!state.history.includes(JSON.stringify(result))) {
-      state.history.push(JSON.stringify(result))
-      state.jsonHistory.push(result)
-      state.position = state.history.length - 1
+      state.history.unshift(JSON.stringify(result))
+      state.jsonHistory.unshift(result)
+      state.position = 0
     }
   }
 }
