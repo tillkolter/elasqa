@@ -1,15 +1,15 @@
 <template>
   <div class="index-mapper">
     <schema-inspector></schema-inspector>
-    <selected-database-fields></selected-database-fields>
+    <mapping-editor></mapping-editor>
   </div>
 </template>
 
 <script>
   import SchemaInspector from './IndexMapper/SchemaInspector'
-  import SelectedDatabaseFields from './IndexMapper/SelectedDatabaseFields'
+  import MappingEditor from './IndexMapper/MappingEditor'
   export default {
-    components: {SelectedDatabaseFields, SchemaInspector},
+    components: {MappingEditor, SchemaInspector},
     name: 'IndexMapper'
   }
 </script>

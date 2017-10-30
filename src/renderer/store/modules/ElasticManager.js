@@ -5,8 +5,8 @@ const state = {
   indices: [],
   currentIndex: undefined,
   currentMapping: {},
-  analyzers: [
-    {
+  analyzers: {
+    standard: {
       id: 'standard',
       description: `
         The standard analyzer divides text into terms on word boundaries, 
@@ -14,14 +14,15 @@ const state = {
         punctuation, lowercases terms, and supports removing stop words.
       `
     },
-    {
+    whitespace: {
       id: 'whitespace',
       description: `
         The whitespace analyzer divides text into terms whenever it encounters any 
         whitespace character. It does not lowercase terms.
       `
     }
-  ]
+  },
+  currentAnalyzer: undefined
 }
 
 const mutations = {
@@ -49,6 +50,11 @@ const mutations = {
     // Default Vuex watcher can not handle reactive map changes
     // So assign the old mapping object to a new one and update the state
     state.currentMapping = Object.assign({}, state.currentMapping)
+  },
+  SET_CURRENT_ANALYZER (state, analyzerId) {
+    if (state.analyzers[analyzerId]) {
+      state.currentAnalyzer = state.analyzers[analyzerId]
+    }
   }
 }
 
@@ -62,18 +68,11 @@ const actions = {
 }
 
 const getters = {
-  elasticIndices: state => {
-    return state.indices
-  },
-  currentElasticIndex: state => {
-    return state.currentIndex
-  },
-  currentElasticMapping: state => {
-    return state.currentMapping
-  },
-  elasticClient: state => {
-    return createClient(state)
-  }
+  elasticIndices: state => state.indices,
+  currentElasticIndex: state => state.currentIndex,
+  currentElasticMapping: state => state.currentMapping,
+  currentElasticAnalyzer: state => state.currentAnalyzer,
+  elasticClient: state => createClient(state)
 }
 
 export default {

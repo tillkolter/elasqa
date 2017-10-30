@@ -1,20 +1,18 @@
 <template>
   <div>
-    <h2>Elastic Mapping</h2>
     <div class="schema-view selected-fields">
       <div class="database-schema" v-for="table in Object.keys(currentElasticMapping)">
         <div class="database-schema__tablename">{{table}}</div>
         <div class="database-schema__details">
           <div class="database-schema__feature" v-for="feature in Object.keys(currentElasticMapping[table])">
             <div>{{feature}} [{{currentElasticMapping[table][feature].type}}]</div>
-            <div class="analyzer">
+            <div @click="selectAnalyzer(currentElasticMapping[table][feature].analyzer)" class="analyzer">
               <span>
                 <template v-if="currentElasticMapping[table][feature].searchAnalyzer">Index&nbsp;
                 </template>
                 Analyzer
               </span>
-              <div @click="selectAnalyzer(currentElasticMapping[table][feature].analyzer)"
-                   class="analyzer__type">{{currentElasticMapping[table][feature].analyzer}}</div>
+              <div class="analyzer__type">{{currentElasticMapping[table][feature].analyzer}}</div>
             </div>
             <div @click="selectAnalyzer(currentElasticMapping[table][feature].searchAnalyzer)"
                  class="analyzer"
